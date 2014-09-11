@@ -1,0 +1,55 @@
+# This file is maintained by Puppet
+# Any changes will be lost
+
+[sssd]
+config_file_version = 2
+<% if @reconnection_retries and @reconnection_retries != '' -%>
+reconnection_retries = <%= @reconnection_retries %>
+<% end -%>
+<% if @sbus_timeout and @sbus_timeout != '' -%>
+sbus_timeout = <%= @sbus_timeout %>
+<% end -%>
+services = <%= @services.join(',') %>
+domains = <%= @domains.keys().join(',') %>
+<% if @services.include?('nss') -%>
+[nss]
+<% @nss_options.each_pair do |key,value| -%>
+<%= key -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% if @services.include?('pam') -%>
+[pam]
+<% @pam_options.each_pair do |key,value| -%>
+<%= key -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% if @services.include?('sudo') -%>
+[sudo]
+<% @sudo_options.each_pair do |key,value| -%>
+<%= key -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% if @services.include?('autofs') -%>
+[autofs]
+<% @autofs_options.each_pair do |key,value| -%>
+<%= key -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% if @services.include?('ssh') -%>
+[ssh]
+<% @ssh_options.each_pair do |key,value| -%>
+<%= key -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% @domains.each_pair do |name,data| -%>
+[domain/<%= name -%>]
+<% data.each_pair do |key,value| -%>
+<% if key =~ /_uri/ and  @rotate_uris and value.kind_of?(Array) -%>
+<%= key -%> = <%= scope.function_fqdn_rotate([value]).join(',') %>
+<% elsif value.kind_of?(Array) -%>
+<%= key -%> = <%= value.join(',') %>
+<% else -%>
+<%= key -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% end -%>

@@ -1,0 +1,17 @@
+{
+  "name": "asciiduck-sssd",
+  "version": "0.1.0",
+  "author": "asciiduck",
+  "summary": "Manage the SSSD service.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/ASCIIDuck/asciiduck-sssd",
+  "project_page": "https://github.com/ASCIIDuck/asciiduck-sssd",
+  "issues_url": "https://github.com/ASCIIDuck/asciiduck-sssd/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+
