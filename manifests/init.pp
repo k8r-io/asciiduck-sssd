@@ -39,6 +39,9 @@ class sssd (
     $autofs_options = $sssd::params::autofs_options,
     $ssh_options = $sssd::params::ssh_options,
 
+    $sss_cache_path = $sssd::params::sss_cache_path,
+    $flush_cache_on_change = $sssd::params::flush_cache_on_change,
+
     $unsupported = $sssd::params::unsupported,
     $override_unsupported = $sssd::params::override_unsupported,
   ) inherits sssd::params {
@@ -74,6 +77,9 @@ class sssd (
   validate_hash($sudo_options)
   validate_hash($autofs_options)
   validate_hash($ssh_options)
+
+  validate_array($sss_cache_path)
+  validate_bool($flush_cache_on_change)
 
   validate_bool($unsupported)
   validate_bool($override_unsupported)

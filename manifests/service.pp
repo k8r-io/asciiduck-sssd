@@ -11,4 +11,11 @@ class sssd::service {
       enable => $sssd::service_enable,
     }
   }
+  if $sssd::flush_cache_on_change {
+    exec{'sss_cache flush':
+      command     => 'sss_cache -E',
+      path        => $sssd::sss_cache_path,
+      refreshonly => true,
+    }
+  }
 }

@@ -363,6 +363,20 @@ describe 'sssd' do
           end
         end
       end
+      describe 'with flush_cache_on_change override' do
+        describe "equal false" do 
+          let(:params) { {
+            :flush_cache_on_change  => false
+          } }
+          it {should_not contain_exec('sss_cache flush')}
+        end
+        describe "equal true" do 
+          let(:params) { {
+            :flush_cache_on_change  => true
+          } }
+          it {should contain_exec('sss_cache flush').with_command('sss_cache -E')}
+        end
+      end
       # application setting overrides
       describe 'with domain settings overrode:' do
         describe 'ldap domain without uri rotation' do
@@ -426,6 +440,7 @@ describe 'sssd' do
         :service_name         => 'foo',
         :service_ensure       => 'running',
         :service_enable       => true,
+        :sss_cache_path       => ['/foo/']
       } }
       it { should compile }
     end

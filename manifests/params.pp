@@ -23,6 +23,8 @@ class sssd::params {
       $service_name = 'sssd'
       $service_ensure = 'running'
       $service_enable = true
+
+      $sss_cache_path = [ '/usr/sbin/' ]
     }
     default: {
       $unsupported = true
@@ -52,5 +54,8 @@ class sssd::params {
   $sudo_options = {}
   $autofs_options = {}
   $ssh_options = {}
+
+
+  $flush_cache_on_change = true
 
 }
