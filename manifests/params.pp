@@ -24,6 +24,38 @@ class sssd::params {
       $service_ensure = 'running'
       $service_enable = true
     }
+    'Debian': {
+      case $::operatingsystem {
+        'Ubuntu': {
+          case $::lsbdistrelease {
+            '14.04': {
+              $unsupported = false
+
+              $manage_package = true
+              $package_name = ['sssd','sssd-ldap']
+              $package_ensure = 'present'
+
+              $manage_config = true
+              $config_path = '/etc/sssd/sssd.conf'
+              $config_owner = 'root'
+              $config_group = 'root'
+              $config_mode  = '0600'
+
+              $manage_service = true
+              $service_name = 'sssd'
+              $service_ensure = 'running'
+              $service_enable = true
+            }
+            default: {
+              $unsupported = true
+            }
+          }
+        }
+        default: {
+          $unsupported = true
+        }
+      }
+    }
     default: {
       $unsupported = true
     }
