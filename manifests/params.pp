@@ -32,7 +32,7 @@ class sssd::params {
               $unsupported = false
 
               $manage_package = true
-              $package_name = ['sssd','sssd-ldap','sssd-tools']
+              $package_name = ['sssd','sssd-ldap','sssd-tools','sudo']
               $package_ensure = 'present'
 
               $manage_config = true
