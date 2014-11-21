@@ -17,8 +17,9 @@ SSSD is the replacement for nslcd that is the default in CentOS and RHEL 7.
 This module will install, configure and manage the SSSD service, but it will
 not touch your nsswitch or your pam configs, that's the job for another module.
 
-Currently this module only supports RHEL/CentOS 7; however, if you specify 
-the needed parameters yourself you can override the "unsupported os" failure.
+Currently this module only supports RHEL/CentOS 7 and Ubuntu 14.04; however, 
+if you specify the needed parameters yourself you can override the "unsupported 
+os" failure.
 
 ## Usage
 

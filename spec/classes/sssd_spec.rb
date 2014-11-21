@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe 'sssd' do
-  ['RHEL7'].each do |platform|
+  ['Ubuntu1404'].each do |platform|
     context "on #{platform}" do
       defaults = Hash.new
       if platform.eql?('RHEL7')
@@ -9,6 +9,26 @@ describe 'sssd' do
           :operatingsystem           => 'RedHat',
           :operatingsystemmajrelease => '7',
           :operatingsystemrelease    => '7.0',
+          :kernel                    => 'Linux',
+          :fqdn                      => 'test.example.org',
+        } }
+        defaults[:package_name] = ['sssd','sssd-ldap']
+        defaults[:package_ensure] = 'present'
+        defaults[:config_path] = '/etc/sssd/sssd.conf'
+        defaults[:config_owner] = 'root'
+        defaults[:config_group] = 'root'
+        defaults[:config_mode] = '0600'
+        defaults[:service_name] = 'sssd'
+        defaults[:service_ensure] = 'running'
+        defaults[:service_enable] = true
+      end
+      if platform.eql?('Ubuntu1404')
+        let(:facts) { {
+          :osfamily                  => 'Debian',
+          :operatingsystem           => 'Ubuntu',
+          :operatingsystemmajrelease => '14.04',
+          :operatingsystemrelease    => '14.04',
+          :lsbdistrelease            => '14.04',
           :kernel                    => 'Linux',
           :fqdn                      => 'test.example.org',
         } }
