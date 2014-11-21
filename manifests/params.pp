@@ -47,6 +47,7 @@ class sssd::params {
               $service_name = 'sssd'
               $service_ensure = 'running'
               $service_enable = true
+              $sss_cache_path = [ '/usr/sbin/' ]
             }
             default: {
               $unsupported = true
