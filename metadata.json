@@ -1,6 +1,6 @@
 {
   "name": "asciiduck-sssd",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "asciiduck",
   "summary": "Manage the SSSD service.",
   "license": "Apache 2.0",

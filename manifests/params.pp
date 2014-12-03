@@ -10,7 +10,7 @@ class sssd::params {
       $unsupported = false
 
       $manage_package = true
-      $package_name = ['sssd','sssd-ldap']
+      $package_name = ['sssd-common','sssd-client','sssd-ldap']
       $package_ensure = 'present'
 
       $manage_config = true
