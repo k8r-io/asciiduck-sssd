@@ -32,22 +32,16 @@ class sssd::params {
           case $::lsbdistrelease {
             '14.04': {
               $unsupported = false
-
-              $manage_package = true
-              $package_name = ['sssd','sssd-ldap','sssd-tools','sudo']
-              $package_ensure = 'present'
-
-              $manage_config = true
-              $config_path = '/etc/sssd/sssd.conf'
-              $config_owner = 'root'
-              $config_group = 'root'
-              $config_mode  = '0600'
-
-              $manage_service = true
-              $service_name = 'sssd'
-              $service_ensure = 'running'
-              $service_enable = true
-              $sss_cache_path = [ '/usr/sbin/' ]
+            }
+            default: {
+              $unsupported = true
+            }
+          }
+        }
+        'Debian': {
+          case $::lsbdistrelease {
+            /8\.[0-9]+/: {
+              $unsupported = false
             }
             default: {
               $unsupported = true
@@ -58,6 +52,22 @@ class sssd::params {
           $unsupported = true
         }
       }
+
+      $manage_package = true
+      $package_name = ['sssd','sssd-ldap','sssd-tools','sudo']
+      $package_ensure = 'present'
+
+      $manage_config = true
+      $config_path = '/etc/sssd/sssd.conf'
+      $config_owner = 'root'
+      $config_group = 'root'
+      $config_mode  = '0600'
+
+      $manage_service = true
+      $service_name = 'sssd'
+      $service_ensure = 'running'
+      $service_enable = true
+      $sss_cache_path = [ '/usr/sbin/' ]
     }
     default: {
       $unsupported = true
