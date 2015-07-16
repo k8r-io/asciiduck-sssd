@@ -84,8 +84,9 @@ class sssd (
   validate_bool($unsupported)
   validate_bool($override_unsupported)
 
+  anchor { 'sssd::begin': } ->
   class { 'sssd::install': } ->
   class { 'sssd::config': } ~>
   class { 'sssd::service': } ->
-  Class['sssd']
+  anchor { 'sssd::end': }
 }
