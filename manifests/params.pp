@@ -29,23 +29,17 @@ class sssd::params {
     'Debian': {
       case $::operatingsystem {
         'Ubuntu': {
-          case $::lsbdistrelease {
-            '14.04': {
-              $unsupported = false
-            }
-            default: {
-              $unsupported = true
-            }
+          if versioncmp($::operatingsystemrelease, '14.04') == 0 {
+            $unsupported = false
+          } else {
+            $unsupported = true
           }
         }
         'Debian': {
-          case $::lsbdistrelease {
-            /8\.[0-9]+/: {
-              $unsupported = false
-            }
-            default: {
-              $unsupported = true
-            }
+          if versioncmp($::operatingsystemrelease, '8.0') >= 0 {
+            $unsupported = false
+          } else {
+            $unsupported = true
           }
         }
         default: {
