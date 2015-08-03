@@ -4,7 +4,7 @@
 #  The main entry point for the module is the init class
 #
 
-class sssd::config {
+class sssd::config inherits sssd {
   if $sssd::manage_config {
     if $sssd::config_source == '' {
       file { $sssd::config_path:
