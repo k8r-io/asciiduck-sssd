@@ -72,7 +72,7 @@ class sssd::params {
   $config_source = ''
   $config_content = ''
   $config_template = 'sssd/sssd.conf.erb'
-  $services = ['nss','passwd']
+  $services = ['nss','pam']
   $domains = {
     'local' => {
       'id_provider'      => 'local',
