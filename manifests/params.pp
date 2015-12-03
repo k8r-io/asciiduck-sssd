@@ -31,6 +31,8 @@ class sssd::params {
         'Ubuntu': {
           if versioncmp($::operatingsystemrelease, '14.04') == 0 {
             $unsupported = false
+          } elsif versioncmp($::operatingsystemrelease, '15.10') == 0 {
+            $unsupported = false
           } else {
             $unsupported = true
           }
