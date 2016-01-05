@@ -89,11 +89,7 @@ describe 'sssd' do
           let(:params) { {
             :package_name => {'name'=>'sssd-package'}
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with package_ensure override' do
@@ -111,11 +107,7 @@ describe 'sssd' do
           let(:params) { {
             :package_ensure => ['invalid','array']
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with manage_package override' do
@@ -129,11 +121,7 @@ describe 'sssd' do
           let(:params) { {
             :manage_package  => 'invalid'
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       # Config overrides
@@ -152,11 +140,7 @@ describe 'sssd' do
           let(:params) { {
             :config_path => 'foo/sssd.conf'  
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with config_owner override' do
@@ -174,11 +158,7 @@ describe 'sssd' do
           let(:params) { {
             :config_owner => ['foo','bar']  
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with config_group override' do
@@ -196,11 +176,7 @@ describe 'sssd' do
           let(:params) { {
             :config_group => ['foo','bar']  
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with config_mode override' do
@@ -220,11 +196,7 @@ describe 'sssd' do
           let(:params) { {
             :config_mode => '890'
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with config_content override' do
@@ -243,11 +215,7 @@ describe 'sssd' do
           let(:params) { {
             :config_mode => ['one','two']
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with config_source override' do
@@ -260,18 +228,13 @@ describe 'sssd' do
             :group   => defaults[:config_group],
             :mode    => defaults[:config_mode],
             :source  => 'puppet:///test-resources/sssd.conf',
-            :content => ''
           } ) }
         end
         describe 'equals an array' do
           let(:params) { {
             :config_mode => ['one','two']
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with config_template override' do
@@ -290,11 +253,7 @@ describe 'sssd' do
           let(:params) { {
             :config_mode => ['one','two']
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
 
@@ -318,11 +277,7 @@ describe 'sssd' do
           let(:params) { {
             :service_name => ['sssd-service','other-service']
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with service_ensure override' do
@@ -338,11 +293,7 @@ describe 'sssd' do
           let(:params) { {
             :service_ensure => 'waffles'
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with service_enable override' do
@@ -358,11 +309,7 @@ describe 'sssd' do
           let(:params) { {
             :service_enable => 'waffles'
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with manage_service override' do
@@ -376,11 +323,7 @@ describe 'sssd' do
           let(:params) { {
             :manage_service  => 'invalid'
           } }
-          it do
-            expect {
-              should compile
-            }.to raise_error(Puppet::Error)
-          end
+          it { is_expected.to raise_error(Puppet::Error) }
         end
       end
       describe 'with flush_cache_on_change override' do
@@ -439,11 +382,7 @@ describe 'sssd' do
       :fqdn                      => 'test.example.org',
     } }
     describe 'with defaults for all parameters' do
-      it do
-        expect {
-          should compile
-        }.to raise_error(Puppet::Error, /unsupported os/i)
-      end
+      it { is_expected.to raise_error(Puppet::Error, /unsupported os/i) }
     end
     describe 'with override_unsupported = true and values provided for everything' do
       let(:params) { {

@@ -29,14 +29,14 @@ class sssd::params {
     'Debian': {
       case $::operatingsystem {
         'Ubuntu': {
-          if versioncmp($::operatingsystemrelease, '14.04') == 0 {
+          if versioncmp("${::operatingsystemrelease}", '14.04') == 0 {
             $unsupported = false
           } else {
             $unsupported = true
           }
         }
         'Debian': {
-          if versioncmp($::operatingsystemrelease, '8.0') >= 0 {
+          if versioncmp("${::operatingsystemrelease}", '8.0') >= 0 {
             $unsupported = false
           } else {
             $unsupported = true
