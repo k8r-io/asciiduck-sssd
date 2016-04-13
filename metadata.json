@@ -1,6 +1,6 @@
 {
   "name": "asciiduck-sssd",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "asciiduck",
   "summary": "Manage the SSSD service.",
   "license": "Apache 2.0",
@@ -20,7 +20,7 @@
     },
     {
     "operatingsystem":"Ubuntu",
-    "operatingsystemrelease":["14.04"]
+    "operatingsystemrelease":["14.04","15.10","16.04"]
     }
   ]
 
