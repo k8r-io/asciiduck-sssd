@@ -15,6 +15,7 @@ class sssd::service {
         command     => 'sss_cache -E',
         path        => $sssd::sss_cache_path,
         refreshonly => true,
+        returns     => [0, 2],
         require     => Service[$sssd::service_name]
       }
     }
